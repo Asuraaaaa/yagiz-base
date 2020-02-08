@@ -47,7 +47,7 @@ end
 	local ekranda,_x,_y=World3dToScreen2d(x,y,z)
 	local px,py,pz=table.unpack(kamerakor)
 	local olcek = 0.35
-	if onScreen then
+	if ekranda then
 		SetTextScale(olcek, olcek)
 		SetTextFont(4)
 		SetTextProportional(1)
@@ -57,8 +57,8 @@ end
 		SetTextCentre(1)
 		AddTextComponentString(icerik)
         DrawText(_x,_y)
-        local factor = (string.len(icerik)) / 370
-        DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
+        local faktor = (string.len(icerik)) / 370
+        DrawRect(_x,_y+0.0125, 0.015+ faktor, 0.03, 41, 11, 41, 68)
 	end
 end
 
