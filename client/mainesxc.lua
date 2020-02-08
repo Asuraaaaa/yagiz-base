@@ -124,7 +124,7 @@ end
 function OpenConfirmationMenu(menu)
     local options = {
         { label = 'Evet', action = menu.confirmation },
-        { label = 'Hayır', action = menu.denial },
+        { label = 'Hayir', action = menu.denial },
     }
 
     local confirmation = {
