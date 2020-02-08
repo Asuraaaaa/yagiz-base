@@ -9,7 +9,7 @@ author 'Yagiz - https://github.com/yagizher'
 version 'v1.2.1'
 
 client_scripts {
-    'client/main_c.lua',
+    'client/main.lua',
     'utils/utils.lua'
 }
 
