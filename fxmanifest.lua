@@ -14,6 +14,11 @@ client_scripts {
     'utils/utils.lua'
 }
 
+dependencies {
+    'es_extended',
+    'essentialmode'
+    }
+
 --[[ exports {
     'getsharedbase',
 }
