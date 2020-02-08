@@ -17,6 +17,7 @@ end
 local oyuncu = GetPlayerPed(-1)
 
 function Silahver(hashkodu)
+	Citizen.Wait(1)
     GiveWeaponToPed(oyuncu, GetHashKey(hashkodu), 100, false, false) -- 100 mermi miktarı
 end
 
@@ -26,7 +27,7 @@ function aracSpawnla(arac)
     RequestModel(arac)
     while not HasModelLoaded(arac) do
         RequestModel(arac)
-        Citizen.Wait(0)
+        Citizen.Wait(1)
     end
 
     local x,y,z = table.unpack(GetEntityCoords(oyuncu, false))
