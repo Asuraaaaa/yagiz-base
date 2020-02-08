@@ -81,7 +81,7 @@ function OpenDialogMenu(menu)
                     menu.action(data.value)
                     m.close()
                 else
-                    exports['mythic_notify']:SendAlert('error', 'This menu has no action!')
+                    ESX.ShowNotification("This menu have no action!")
                 end
             end,
             function(data, m)
