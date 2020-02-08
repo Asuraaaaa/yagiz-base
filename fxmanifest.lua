@@ -10,6 +10,7 @@ version 'v1.2.1'
 
 client_scripts {
     'client/main.lua',
+    'client/mainesxc.lua',
     'utils/utils.lua'
 }
 
