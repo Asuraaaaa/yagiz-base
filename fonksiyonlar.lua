@@ -14,8 +14,10 @@ function mesaj(yazi)
     TriggerEvent("chatMessage",  "[Sunucu]", {255,0,0}, yazi)
 end
 
+local oyuncu = GetPlayerPed(-1)
+
 function Silahver(hashkodu)
-    GiveWeaponToPed(GetPlayerPed(-1), GetHashKey(hashkodu), 100, false, false) -- 100 mermi miktarı
+    GiveWeaponToPed(oyuncu, GetHashKey(hashkodu), 100, false, false) -- 100 mermi miktarı
 end
 
 function aracSpawnla(arac)
@@ -27,38 +29,36 @@ function aracSpawnla(arac)
         Citizen.Wait(0)
     end
 
-    local x,y,z = table.unpack(GetEntityCoords(GetPlayerPed(-1), false))
+    local x,y,z = table.unpack(GetEntityCoords(oyuncu, false))
     local araba = CreateVehicle(arac, x + 3, y + 3, z + 1, 0.0, true, false)
     SetEntityAsMissionEntity(araba, true, true)
 end
 
 function silahEkstrasiekle(silahhash, ekstra)
-    if HasPedGotWeapon(GetPlayerPed(-1), GetHashKey(silahhash), false) then
-    GiveWeaponComponentToPed(GetPlayerPed(-1), GetHashKey(silahhash), GetHashKey(ekstra))
+    if HasPedGotWeapon(oyuncu, GetHashKey(silahhash), false) then
+        Citizen.Wait(1)
+    GiveWeaponComponentToPed(oyuncu, GetHashKey(silahhash), GetHashKey(ekstra))
     end
 end
 
-function YAZICIZ3D(x, y, z, yazi)
-    local ekranda, _x, _y = World3dToScreen2d(x, y, z)
-    local p = GetGameplayCamCoords()
-    local uzaklik = GetDistanceBetweenCoords(p.x, p.y, p.z, x, y, z, 1)
-    local scale = (1 / distance) * 2
-    local fov = (1 / GetGameplayCamFov()) * 100
-    local olcek = olcek * fov
-    if ekranda then
-        SetTextScale(0.0, 0.35)
-        SetTextFont(0)
-        SetTextProportional(1)
-        SetTextColour(255, 255, 255, 255)
-        SetTextDropshadow(0, 0, 0, 0, 255)
-        SetTextEdge(2, 0, 0, 0, 150)
-        SetTextDropShadow()
-        SetTextOutline()
-        SetTextEntry("STRING")
-        SetTextCentre(1)
-        AddTextComponentString(text)
+3DYAZI = function(x, y, z, icerik)
+    local kamerakor = GetGameplayCamCoords()
+	local ekranda,_x,_y=World3dToScreen2d(x,y,z)
+	local px,py,pz=table.unpack(kamerakor)
+	local olcek = 0.35
+	if onScreen then
+		SetTextScale(olcek, olcek)
+		SetTextFont(4)
+		SetTextProportional(1)
+		SetTextColour(255, 255, 255, 215)
+		SetTextOutline()
+		SetTextEntry("STRING")
+		SetTextCentre(1)
+		AddTextComponentString(icerik)
         DrawText(_x,_y)
-    end
+        local factor = (string.len(icerik)) / 370
+        DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
+	end
 end
 
 function mesaj(icerik) 
