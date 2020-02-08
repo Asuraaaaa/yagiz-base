@@ -1,7 +1,7 @@
-function getOrElse(value, default)
-    if value ~= nil then
-        return value
+function alolmazsa(deger, varsayilan)
+    if deger ~= nil then
+        return deger
     else
-        return default
+        return varsayilan
     end
 end
