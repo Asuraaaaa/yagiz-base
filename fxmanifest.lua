@@ -9,7 +9,7 @@ author 'Yagiz - https://github.com/yagizher'
 version 'v1.2.1'
 
 client_scripts {
-    'client/anafonksiyonlar1_c.lua'
+    'client/main1_c.lua'
 }
 
 --[[ exports {
