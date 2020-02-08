@@ -2,7 +2,18 @@ fx_version 'adamant'
 
 game 'gta5'
 
+name 'Yagiz BASE Script'
+
+author 'Yagiz - https://github.com/yagizher'
+
+version 'v1.2.1'
+
 client_scripts {
-    "fonksiyonlar.lua",
-    "silahlar_c.lua"
+    'fonksiyonlar_c.lua',
+    'fonksiyonlar_s.lua'
 }
+
+--[[ exports {
+    'getsharedbase',
+}
+ SOON BRUH --]]
