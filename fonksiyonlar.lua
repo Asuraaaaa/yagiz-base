@@ -44,7 +44,7 @@ function YAZICIZ3D(x, y, z, yazi)
     local uzaklik = GetDistanceBetweenCoords(p.x, p.y, p.z, x, y, z, 1)
     local scale = (1 / distance) * 2
     local fov = (1 / GetGameplayCamFov()) * 100
-    local scale = scale * fov
+    local olcek = olcek * fov
     if ekranda then
         SetTextScale(0.0, 0.35)
         SetTextFont(0)
