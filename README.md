@@ -7,4 +7,4 @@ Credits - Me - Jeva - Disc - Alzar
 
 If you want to use my script, add this to your fxmanifest.lua:
 
-client_script "@yagiz-base/fonksiyonlar.lua"
+client_script "@yagiz-base/client/main.lua"
