@@ -70,3 +70,87 @@ function mesaj(icerik)
     AddTextComponentString(content)
     DrawText(0.7,0.9)
 end
+
+Busyspinnerciz = function(yazi)
+    SetLoadingPromptTextEntry("STRING")
+    AddTextComponentSubstringPlayerName(yazi)
+    ShowLoadingPrompt(3)
+end
+
+Silahlabelial = function(Silahmodeli)
+    local playerInventory = ESX.PlayerData["inventory"]
+
+    if not playerInventory then playerInventory = ESX.GetPlayerData()["inventory"] end
+
+    for itemIndex, itemData in ipairs(playerInventory) do
+        if string.lower(itemData["name"]) == string.lower(Silahmodeli) then
+            return itemData["label"]
+        end
+    end
+
+    return Silahmodeli
+end
+
+DisariFade = function(sure)
+    DoScreenFadeOut(sure)
+    
+    while not IsScreenFadedOut() do
+        Citizen.Wait(0)
+    end
+end
+
+IceriFade = function(sure)
+    DoScreenFadeIn(500)
+
+    while not IsScreenFadedIn() do
+        Citizen.Wait(0)
+    end
+end
+
+AnimasyonOynat = function(ped, dict, anim, ayarlar)
+	if dict then
+        Citizen.CreateThread(function()
+            RequestAnimDict(dict)
+
+            while not HasAnimDictLoaded(dict) do
+                Citizen.Wait(100)
+            end
+
+            if ayarlar == nil then
+                TaskPlayAnim(ped, dict, anim, 1.0, -1.0, 1.0, 0, 0, 0, 0, 0)
+            else 
+                local hiz = 1.0
+                local hizmultiplier = -1.0
+                local sure = 1.0
+                local bayrak = 0
+                local oynatRate = 0
+
+                if ayarlar["hiz"] then
+                    hiz = ayarlar["hiz"]
+                end
+
+                if ayarlar["hizmultiplier"] then
+                    hizmultiplier = ayarlar["hizmultiplier"]
+                end
+
+                if ayarlar["sure"] then
+                    sure = ayarlar["sure"]
+                end
+
+                if ayarlar["bayrak"] then
+                    bayrak = ayarlar["bayrak"]
+                end
+
+                if ayarlar["oynatRate"] then
+                    oynatRate = ayarlar["oynatRate"]
+                end
+
+                TaskPlayAnim(ped, dict, anim, hiz, hizmultiplier, sure, bayrak, oynatRate, 0, 0, 0)
+            end
+      
+            RemoveAnimDict(dict)
+		end)
+	else
+		TaskStartScenarioInPlace(ped, anim, 0, true)
+	end
+end
