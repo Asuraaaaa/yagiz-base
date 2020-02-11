@@ -154,3 +154,11 @@ AnimasyonOynat = function(ped, dict, anim, ayarlar)
 		TaskStartScenarioInPlace(ped, anim, 0, true)
 	end
 end
+
+function peditemizle(oyuncu)
+	SetPedArmour(oyuncu, 0)
+	ClearPedBloodDamage(oyuncu)
+	ResetPedVisibleDamage(oyuncu)
+	ClearPedLastWeaponDamage(oyuncu)
+	ResetPedMovementClipset(oyuncu, 0)
+end
